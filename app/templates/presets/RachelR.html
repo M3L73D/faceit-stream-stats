@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/styles/reset.css">
+    <link rel="stylesheet" href="/static/presets/RachelR/widget.css">
+  </head>
+  <body>
+    <script>
+      window.token = "{{ token }}"
+    </script>
+    <div id="widget">
+      <div class="widget-layout">
+        <div class="widget-stats-page">
+          <div class="widget-stats">
+            <div class="stats-body">
+              <div class="stats-row">
+                Матчей - <span class="stats-matches">{{ stats['matches'] }}</span> (<span class="stats-win-today">{{ stats['win-today'] }}</span>-<span class="stats-loss-today">{{ stats['loss-today'] }}</span>)
+              </div>
+              <div class="stats-row">
+                Win\Loss - <span class="stats-win stats-good">{{ stats['win'] }}</span> \ <span class="stats-loss stats-bad">{{ stats['loss'] }}</span>
+              </div>
+              <div class="stats-row">
+                KD\KR - <span class="stats-kd {% if stats['kd'] >= 1.1 %}stats-good{% elif stats['kd'] >= 0.9 %}stats-normal{% else %}stats-bad{% endif %}">{{ stats['kd'] }}</span> \ <span class="stats-kr {% if stats['kr'] >= 0.8 %}stats-good{% elif stats['kr'] >= 0.5 %}stats-normal{% else %}stats-bad{% endif %}">{{ stats['kr'] }}</span>
+              </div>
+              <div class="stats-row">
+                AVG - <span class="stats-avg {% if stats['avg'] >= 20 %}stats-good{% elif stats['avg'] >= 15 %}stats-normal{% else %}stats-bad{% endif %}">{{ stats['avg'] }}</span>
+              </div>
+              <div class="stats-row">
+                ELO Dif - <span class="stats-elo-dif {% if stats['elo-dif'] >= 0 %}stats-good{% else %}stats-bad{% endif %}">{% if stats['elo-dif'] >= 0 %}+{% endif %}{{ stats['elo-dif'] }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/static/scripts/widget.js"></script>        
+  </body>
+</html>

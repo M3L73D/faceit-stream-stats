@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <link rel="stylesheet" href="/static/styles/reset.css">
+  <link rel="stylesheet" href="/static/styles/main.css">
+</head>
+<body>
+  <div class="main-wrapper">
+    <div class="main">
+      <div class="main-header">
+        Виджет для OBS со статистикой по последним матчам
+      </div>
+      <div class="main-body">
+        <img class="main-preview" src="/static/images/preview.png">
+
+        </img>
+        <div class="main-settings">
+          <div class="main-settings-item">
+            <div class="main-label">
+              Никнейм на фейсите
+            </div>
+            <input class="main-nickname" value="RachelR">
+          </div>
+          <div class="main-settings-item">
+            <div class="main-label">
+              Стиль формы
+            </div>
+            <select class="main-selector">
+              <option value="RachelR">RachelR</option>
+            </select>
+          </div>
+          <div class="main-settings-item">
+            <div class="main-label">
+              За какое время
+            </div>
+            <select class="main-selector select-date">
+              <option value="last-matches">Последние матчи</option>
+              <option value="from-date">С определенной даты</option>
+              <option value="in-last" selected>За определенное время</option>
+            </select>
+          </div>
+          <div class="main-settings-item last-matches hide">
+            <div>
+              Показывать статистику для последних <input type="number" class="last-matches-input"> матчей
+            </div>
+          </div>
+          <div class="main-settings-item from-date hide">
+            <div>
+              Показывать статистику начиная с <input type="date" class="from-date-input">
+            </div>
+          </div>
+          <div class="main-settings-item in-last">
+            <div>
+              Показывать статистику за последние <input type="int" class="in-last-input" value="30"> дней
+            </div>
+          </div>
+          <div class="main-button get-link">
+            Получить ссылку
+          </div>
+          <div class="main-button get-table">
+            Скачать таблицу
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="/static/scripts/main.js"></script>
+</body>

@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'Caviar Dreams';
+    src: url('/static/presets/RachelR/fonts/caviar_dreams.woff2') format('woff2'),
+         url('/static/presets/RachelR/fonts/caviar_dreams.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, html {
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#widget {
+    height: 100%;
+}
+
+.widget-layout {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.widget-stats-page {
+    display: flex;
+    flex: 1 0 auto;
+    min-height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.widget-stats {
+    width: auto;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Caviar Dreams';
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.stats-body {
+    padding: 15px;
+    border: 4px solid yellow;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.stats-body > *:first-child {
+    margin-top: 0;
+}
+
+.stats-body > * {
+    margin-top: 3px;
+}
+
+.stats-good {
+    color: rgb(0, 255, 136);
+}
+
+.stats-normal {
+    color: rgb(255, 255, 150);
+}
+
+.stats-bad {
+    color: rgb(255, 96, 96);
+}

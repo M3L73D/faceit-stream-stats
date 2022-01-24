@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'Caviar Dreams';
+    src: url('/static/fonts/caviar_dreams.woff2') format('woff2'),
+         url('/static/fonts/caviar_dreams.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, html {
+    height: 100%;
+    background-color: rgb(1, 22, 30);
+}
+
+.main-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    font-family: 'Caviar Dreams';
+    font-size: 40px;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60vw;
+}
+
+.main-header {
+    text-align: center;
+}
+
+.main-body {
+    display: flex;
+    margin-top: 40px;
+}
+
+.main-preview {
+    width: 440px;
+    height: auto;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.main-settings {
+    display: flex;
+    margin-left: 20px;
+    flex-direction: column;
+    width: 100%;
+    font-size: 25px;
+    justify-content: space-between;
+    height: auto;
+}
+
+.main-settings > * {
+    margin: 10px;
+}
+
+.main-button {
+    background-color: rgb(246, 174, 45);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+.main-button:hover {
+    cursor: pointer;
+}
+
+.main-selector {
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+}
+
+.main-settings-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.last-matches-input, .in-last-input {
+    background-color: inherit;
+    border: 1px solid white;
+    color: white;
+    width: 50px;
+}
+
+.from-date-input {
+    border: none;
+    width: 200px;
+}
+
+.hide {
+    display: none;
+}
+
+.main-button.get-table {
+    background-color: rgb(179, 136, 235);
+}
+
+.main-nickname {
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+}
