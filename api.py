@@ -28,7 +28,7 @@ def get_user_info(nickname):
 def get_user_matches(user_id, last=None, starting_from=None, in_last=None):
 
 	def check_match(match):
-		return match['status'] == 'APPLIED' and match['played'] == '1' and match['premade'] == False
+		return match['status'] == 'APPLIED' and match['played'] == '1' and match['premade'] == False and 'elo' in match
 
 	page = 0
 	matches = []
@@ -42,26 +42,25 @@ def get_user_matches(user_id, last=None, starting_from=None, in_last=None):
 		print(f"[~] Got {len(r)} matches per page for {user_id}")
 
 		for match in r:
+			if check_match(match): # check if it's a real played match
+				if counter == MAX_MATCHES:
+					print(f"[+] Reached the limit of {MAX_MATCHES} matches for {user_id}")
+					return matches, int(match['elo'])
 
-			if counter == MAX_MATCHES:
-				print(f"[+] Reached the limit of {MAX_MATCHES} matches for {user_id}")
-				return matches, int(match['elo'])
+				if last is not None and counter == last:
+					print(f"[+] Got {len(matches)} last matches for {user_id}")
+					return matches, int(match['elo'])
 
-			if last is not None and counter == last:
-				print(f"[+] Got {len(matches)} last matches for {user_id}")
-				return matches, int(match['elo'])
+				if starting_from is not None and match['created_at'] < starting_from * 1000:
+					print(f"[+] Got {len(matches)} matches starting from {starting_from} for {user_id}")
+					return matches, int(match['elo'])
 
-			if starting_from is not None and match['created_at'] < starting_from * 1000:
-				print(f"[+] Got {len(matches)} matches starting from {starting_from} for {user_id}")
-				return matches, int(match['elo'])
+				if in_last is not None and match['created_at'] < (time.time() - 24 * in_last * 60 * 60) * 1000:
+					print(f"[+] Got {len(matches)} matches played in last {in_last} days for {user_id}")
+					return matches, int(match['elo'])
 
-			if in_last is not None and match['created_at'] < (time.time() - 24 * in_last * 60 * 60) * 1000:
-				print(f"[+] Got {len(matches)} matches played in last {in_last} days for {user_id}")
-				return matches, int(match['elo'])
+				counter += 1
 
-			counter += 1
-
-			if check_match(match): # check if it's a real played match	
 				try:
 					matches.append({
 						'created_at': match['created_at'],

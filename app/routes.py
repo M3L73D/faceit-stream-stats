@@ -91,13 +91,14 @@ def table():
 
 	wb = load_workbook(filename="tables/RachelR.xlsx")
 	ws = wb['Статистика']
-	for row, match in enumerate(reversed(matches), start=2):
-		ws.cell(column=1, row=row, value=match['kills'])
-		ws.cell(column=2, row=row, value=match['deaths'])
-		ws.cell(column=3, row=row, value=match['rounds'])
-		ws.cell(column=4, row=row, value='win' if match['win'] else 'lose')
-	ws['F2'] = start_elo
-	ws['G2'] = matches[0]['elo']
+	if stats['matches'] != 0:
+		for row, match in enumerate(reversed(matches), start=2):
+			ws.cell(column=1, row=row, value=match['kills'])
+			ws.cell(column=2, row=row, value=match['deaths'])
+			ws.cell(column=3, row=row, value=match['rounds'])
+			ws.cell(column=4, row=row, value='win' if match['win'] else 'lose')
+		ws['F2'] = start_elo
+		ws['G2'] = matches[0]['elo']
 
 	return Response(
 		save_virtual_workbook(wb),
